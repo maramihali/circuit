@@ -5,4 +5,5 @@ extern crate json;
 extern crate lazy_static;
 
 mod parameters;
-mod circuit;
+mod preimage_circuit;
+mod sum_circuit;

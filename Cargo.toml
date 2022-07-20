@@ -18,6 +18,8 @@ ark-groth16 = { version = "^0.3.0", features = ["r1cs"] }
 ark-sponge = { version = "^0.3.0" , features = ["r1cs"] }
 ark-serialize = { version = "^0.3.0", default-features = false }
 ark-crypto-primitives = { version = "^0.3.0", default-features = true }
+
+ark-nonnative-field = { version = "0.3.0", default-features = false }
 json = "0.12.4"
 lazy_static = "^1.4.0"
 
