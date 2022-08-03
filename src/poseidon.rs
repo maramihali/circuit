@@ -24,7 +24,7 @@ fn test() {
 
   let mut sponge = PoseidonSponge::new(&params);
   sponge.absorb(&scalar.into_repr().to_bits_le());
-  let hash = sponge.squeeze_field_elements::<Fq>(1).remove(0);
+  let hash = sponge.squeeze_field_elements::<Fr>(1).remove(0);
 
   let cs = ConstraintSystem::<Fq>::new_ref();
 
@@ -36,7 +36,11 @@ fn test() {
     .absorb(&nonnative_scalar_var.to_bits_le().unwrap())
     .unwrap();
 
-  let hash_var = sponge_var.squeeze_field_elements(1).unwrap().remove(0);
+  let hash_var = sponge_var
+    .squeeze_nonnative_field_elements::<Fr>(1)
+    .unwrap()
+    .0
+    .remove(0);
 
   assert_eq!(hash, hash_var.value().unwrap());
 }
